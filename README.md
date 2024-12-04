@@ -1,2 +1,2 @@
 ### PurePythonMathematics
-The code should well commented and easy to read for anyone familiar with the subjects.
+The code be should well commented and easy to read for anyone familiar with the subjects.
