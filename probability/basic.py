@@ -64,9 +64,8 @@ print("P(Greater than 3):", P_die(frozenset(event_gt_3)))  # Expected: 0.5
 print("P(Even ∪ Greater than 3):", P_die(frozenset(union(event_even, event_gt_3))))  # Expected: 0.666...
 print("P(Even ∩ Greater than 3):", P_die(frozenset(intersection(event_even, event_gt_3))))  # Expected: 0.333...
 
-from itertools import product
 n_die = 2
-omega_die =  set(product(range(1, 7), repeat=n_die))
+omega_die =  set(cartesian_power(range(1, 7), n_die))
 P_die = lambda event: uniform_probability(omega_die, event)
 
 # Define independent events
