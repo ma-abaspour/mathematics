@@ -31,3 +31,38 @@ def determinant(matrix):
     det += ((-1) ** col) * matrix[0][col] * determinant(minor(matrix, 0, col))
   return det
 
+def add(matrix1, matrix2):
+    return [[matrix1[i][j] + matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
+
+def subtract(matrix1, matrix2):
+    return [[matrix1[i][j] - matrix2[i][j] for j in range(len(matrix1[0]))] for i in range(len(matrix1))]
+
+def scalar_multiply(matrix, scalar):
+    return [[element * scalar for element in row] for row in matrix]
+
+def multiply(matrix1, matrix2):
+    result = zero(len(matrix2[0]), len(matrix1))
+    for i in range(len(matrix1)):
+        for j in range(len(matrix2[0])):
+            for k in range(len(matrix2)):
+                result[i][j] += matrix1[i][k] * matrix2[k][j]
+    return result
+
+def trace(matrix):
+    return sum(matrix[i][i] for i in range(len(matrix)))
+
+def inverse(matrix):
+    det = determinant(matrix)
+    if det == 0:
+        return None
+    size = len(matrix)
+    cofactors = []
+    for r in range(size):
+        cofactor_row = []
+        for c in range(size):
+            minor_det = determinant(minor(matrix, r, c))
+            cofactor_row.append(((-1) ** (r + c)) * minor_det)
+        cofactors.append(cofactor_row)
+    adjugate = transpose(cofactors)
+    return [[adjugate[i][j] / det for j in range(size)] for i in range(size)]
+
