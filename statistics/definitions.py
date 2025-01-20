@@ -187,3 +187,5 @@ def binomial_probability(n, k, p):
 def exponential_growth(a, b, x):
     e = 2.718281828459045
     return a * (e ** (b * x))
+
+
